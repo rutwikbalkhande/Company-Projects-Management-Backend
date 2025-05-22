@@ -8,11 +8,14 @@ import java.util.List;
 
 public interface ClientService {
 
-  ClientDTO create(ClientDTO clientDto);
+  Client create(ClientDTO clientDto);
 
   List<ClientDTO> getList();
 
-  ClientDTO getByid(Long id);
+  Client getById(Long id);
 
+  Client updateById(Long id, ClientDTO clientDto);
+
+  String deleteById(Long id);
 
 }

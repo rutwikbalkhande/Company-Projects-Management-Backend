@@ -36,7 +36,7 @@ public class Client {
     @OneToMany(mappedBy = "client")
     private List<Employee> employee;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client" , cascade = CascadeType.ALL)
     private List<Project> project;
 
 }

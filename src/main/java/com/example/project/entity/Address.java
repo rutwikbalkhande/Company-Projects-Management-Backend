@@ -29,4 +29,5 @@ public class Address {
     @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
     private Client client;
 
+
 }

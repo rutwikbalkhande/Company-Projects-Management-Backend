@@ -1,14 +1,19 @@
 package com.example.project.service;
 
 import com.example.project.dto.ProjectDTO;
+import com.example.project.entity.Project;
 
 import java.util.List;
 
 public interface ProjectService {
 
-    ProjectDTO create(ProjectDTO projectDto);
+    Project create(ProjectDTO projectDto);
 
     List<ProjectDTO> getList();
 
-    ProjectDTO getByid(Long id);
+    Project getById(Long id);
+
+    Project updateById(Long id, ProjectDTO projectDto);
+
+    void deleteById(Long id);
 }
