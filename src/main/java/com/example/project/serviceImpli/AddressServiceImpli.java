@@ -17,6 +17,17 @@ public class AddressServiceImpli implements AddressService {
     @Autowired
     private AddressRepository addressRepo;
 
+    public AddressDTO entityToDto (Address a)         // converting Address entity to AddressDTO
+    {
+        AddressDTO dto=new AddressDTO();
+        dto.setAddress (a.getAddress()) ;
+        dto.setState (a.getState());
+        dto.setCity (a.getCity());
+        dto.setPincode (a.getPincode());
+
+        return dto;
+    }
+
     @Override
     public Address create(AddressDTO addressDto) {
 

@@ -15,5 +15,5 @@ public interface ProjectService {
 
     Project updateById(Long id, ProjectDTO projectDto);
 
-    void deleteById(Long id);
+    String deleteById(Long id);
 }

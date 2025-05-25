@@ -28,6 +28,7 @@ public class Project {
 
     private String status;
 
+
     @OneToMany(mappedBy = "project")
     private List<Employee> employee;
 
@@ -38,3 +39,25 @@ public class Project {
     private Client client;
 
 }
+// Postman
+/*
+ {
+  "name": "New Project",
+  "description": "Build an app",
+  "status": "ONGOING",
+  "projectStartDate": "2025-05-25",
+  "projectEndDate": "2025-07-01",
+  "clientId": 1,
+  "employeeDto": [
+    { "id": 2 },
+    { "id": 1 }
+  ],
+  "taskDto": [
+    { "id": 2 },
+    { "id": 1 }
+  ]
+}
+
+}
+
+ */

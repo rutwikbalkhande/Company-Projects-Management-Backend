@@ -36,3 +36,16 @@ public class Task {
 
 
 }
+//postman data
+/*
+{
+
+        "name": "abhi",
+        "description": "remove bugs",
+        "deadline": "2027-08-01",
+        "responsibility": "tester",
+        "status": "ongoining",
+        "employeeId": 1,
+        "projectId": 2
+    }
+ */

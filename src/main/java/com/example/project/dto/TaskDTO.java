@@ -27,10 +27,13 @@ public class TaskDTO {
     private String responsibility;
 
     private String status;
-
+/*
     private EmployeeDTO employeeDto;
-
     private ProjectDTO projectDto;
+*/
+    private Long employeeId;
+    private Long projectId;
+
 
     //constructor crating
 
@@ -44,14 +47,15 @@ public class TaskDTO {
 
 
         if (task.getEmployee() != null) {
-            this.employeeDto = new EmployeeDTO(task.getEmployee());
+            this.employeeId = (task.getEmployee().getId());
         }
 
         if (task.getProject() != null) {
-            this.projectDto = new ProjectDTO(task.getProject());
+            this.projectId = task.getProject().getId();
         }
 
 
     }
+
 
 }

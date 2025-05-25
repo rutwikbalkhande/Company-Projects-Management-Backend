@@ -2,7 +2,9 @@ package com.example.project.serviceImpli;
 
 import com.example.project.dto.AddressDTO;
 import com.example.project.dto.ClientDTO;
+import com.example.project.entity.Address;
 import com.example.project.entity.Client;
+import com.example.project.repository.AddressRepository;
 import com.example.project.repository.ClientRepository;
 import com.example.project.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class ClientServiceImpli implements ClientService {
     @Autowired
     private ClientRepository clientRepo;
 
+    @Autowired
+    private AddressRepository addressRepo;
+
     @Override
     public Client create(ClientDTO clientDto) {
 
@@ -28,13 +33,18 @@ public class ClientServiceImpli implements ClientService {
         client.setContractStartDate( clientDto.getContractStartDate());
         client.setContractEndDate( clientDto.getContractEndDate());
 
+          //set AddressId in client table
+       Address address= addressRepo.findById(clientDto.getAddressId()).orElseThrow();
+
+       client.setAddress(address);
 
         return clientRepo.save(client);
     }
 
     @Override
     public List<ClientDTO> getList() {
-        return clientRepo.findAll(). stream().map(ClientDTO :: new).collect(Collectors.toList());
+
+        return clientRepo.findAll(). stream().map(ClientDTO :: new).toList();
     }
 
     @Override
@@ -53,6 +63,13 @@ public class ClientServiceImpli implements ClientService {
            client.setContractStartDate(clientDto.getContractStartDate());
            client.setContractEndDate(clientDto.getContractEndDate());
 
+           if(clientDto.getAddressId() !=null)
+           {
+              Address address = addressRepo.findById(clientDto.getAddressId()) .orElseThrow();
+              client.setAddress(address);
+           }
+
+
             return clientRepo.save(client);
         }) .orElseThrow(() -> new RuntimeException("client not found"));
 
@@ -61,9 +78,9 @@ public class ClientServiceImpli implements ClientService {
     @Override
     public String deleteById(Long id) {
 
-        clientRepo.findById(id).orElseThrow( () -> new RuntimeException(" id not found: "));
+       Client client = clientRepo.findById(id).orElseThrow( () -> new RuntimeException(" id not found: "));
 
-        clientRepo.deleteById(id);
+        clientRepo.delete(client);
 
         return "record delete successfully";
 

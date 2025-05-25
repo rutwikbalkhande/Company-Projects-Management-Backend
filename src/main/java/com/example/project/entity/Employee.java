@@ -49,10 +49,26 @@ public class Employee {
      private Client client;
 
 
-
-
-
-
-
-
 }
+/*   postman data........
+    employee create
+    {
+  "name": "rutwik",
+  "email": "rutwik@gmail.com",
+  "role": "Java Developer",
+  "phone": "245889658",
+  "asset": "laptop",
+  "salary": 25000.00,
+  "joiningDate": "2025-05-12",
+  "addressDto": {
+    "address": "Karve Nagar",
+    "state": "Maharashtra",
+    "city": "Pune",
+    "pincode": "984845"
+  },
+  "projectId"=1,
+  "client":1,
+  "addressId": 1
+}
+
+     */

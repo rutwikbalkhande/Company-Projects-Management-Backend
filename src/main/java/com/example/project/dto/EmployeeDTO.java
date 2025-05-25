@@ -36,12 +36,14 @@ public class EmployeeDTO {
 
     private ProjectDTO projectDto;
 
-    private AddressDTO addressDto;           // Good (uses another DTO)
+    private AddressDTO addressDto;
 
     private List<TaskDTO> taskDto;
 
+    // Just keep related entity IDs to avoid deep recursion
     private Long projectId;
-    private Long clientId;// Good (uses DTOs)
+    private Long clientId;
+    private Long addressId;
 
     public EmployeeDTO(Employee employee) {
         this.id = employee.getId();
@@ -54,20 +56,13 @@ public class EmployeeDTO {
         this.joiningDate = employee.getJoiningDate();
 
         if (employee.getProject() != null) {
-            this.projectDto = new ProjectDTO(employee.getProject());
+            this.projectId = employee.getProject().getId();
         }
-
-        if (employee.getAddress() != null) {
-            this.addressDto = new AddressDTO(employee.getAddress());
-        }
-
-        if (employee.getClient() != null)
+        if (employee.getClient() != null) {
             this.clientId = employee.getClient().getId();
-
-        if (employee.getTasks() != null) {
-            this.taskDto = employee.getTasks().stream()
-                    .map(TaskDTO::new)
-                    .collect(Collectors.toList());
+        }
+        if (employee.getAddress() != null) {
+            this.addressId = employee.getAddress().getId();
         }
     }
 

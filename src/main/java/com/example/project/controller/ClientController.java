@@ -16,7 +16,7 @@ public class ClientController {
     @Autowired
     private ClientServiceImpli clientService;
 
-    @PutMapping("/create")
+    @PostMapping("/save")
     public Client create(@RequestBody ClientDTO clientDto) {
         return clientService.create(clientDto);
     }
@@ -26,17 +26,17 @@ public class ClientController {
         return clientService.getList();
     }
 
-    @GetMapping("/get-id")
+    @GetMapping("/get")
     public Client getById(@RequestParam Long id) {
         return clientService.getById(id);
     }
 
-    @PutMapping("/update-id/{id}")
+    @PutMapping("/update/{id}")
     public Client updateById(@RequestParam Long id, @RequestBody ClientDTO clientDto) {
         return clientService.updateById(id , clientDto);
     }
 
-     @DeleteMapping("/delete-id")
+     @DeleteMapping("/delete")
      public String deleteById(@RequestParam Long id) {
        return  clientService.deleteById(id);
     }

@@ -30,12 +30,14 @@ public class ClientDTO {
 
     private LocalDate contractEndDate;
 
-
+    private Long addressId;
     private AddressDTO addressDto;
 
     private List<EmployeeDTO> employeeDto;
 
     private List<ProjectDTO> projectDto;
+
+
 
     public ClientDTO(Client client) {
         this.id = client.getId();

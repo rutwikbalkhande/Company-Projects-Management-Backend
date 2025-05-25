@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface TaskService {
 
-   Task create(TaskDTO taskDto);
+   TaskDTO create(TaskDTO taskDto);
 
    List<TaskDTO> getList();
 
    Task getByid(Long id);
 
-   Task upadateById(Long id ,  TaskDTO taskDto);
+   TaskDTO upadateById(Long id ,  TaskDTO dto);
 
-   void deleteById(Long Id);
+   String deleteById(Long id);
 }

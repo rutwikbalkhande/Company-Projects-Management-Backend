@@ -31,6 +31,8 @@ public class ProjectDTO {
 
     private String status;
 
+    private Long clientId;
+
     private List<EmployeeDTO> employeeDto;
 
     private List<TaskDTO> taskDto;
@@ -43,18 +45,18 @@ public class ProjectDTO {
         this.projectEndDate = project.getProjectEndDate();
         this.status = project.getStatus();
 
-
+        if(project.getClient() !=null)
+        {
+            this.clientId = project.getClient().getId();
+        }
 
         if (project.getEmployee() != null) {
-            this.employeeDto = project.getEmployee().stream()
-                    .map(EmployeeDTO::new)
-                    .collect(Collectors.toList());
+            this.employeeDto = project.getEmployee().stream().map(EmployeeDTO::new).toList();
         }
 
         if (project.getTask() != null) {
-            this.taskDto = project.getTask().stream()
-                    .map(TaskDTO::new)
-                    .collect(Collectors.toList());
+            this.taskDto = project.getTask().stream().map(TaskDTO::new).collect(Collectors.toList());
         }
+
     }
 }

@@ -15,7 +15,7 @@ public class AddressController {
     @Autowired
     private AddressServiceImpli addressServiceimpli;
 
-    @PostMapping("/create")
+    @PostMapping("/save")
     public Address create(@RequestBody AddressDTO addressDto) {
 
         return addressServiceimpli.create(addressDto) ;
@@ -26,17 +26,17 @@ public class AddressController {
         return addressServiceimpli.getList() ;
     }
 
-@GetMapping("/get-id")
+@GetMapping("/get")
     public Address getById(@RequestParam  Long id) {
         return addressServiceimpli.getById(id);
     }
 
-@PutMapping("/update-id")
+@PutMapping("/update")
     public Address updateById(@RequestParam Long id,@RequestBody AddressDTO addressDto) {
         return addressServiceimpli.updateById(id, addressDto);
     }
 
-@DeleteMapping("/delete-id")
+@DeleteMapping("/delete")
     public String deleteById(@RequestParam Long id) {
      return addressServiceimpli.deleteById(id);
     }
